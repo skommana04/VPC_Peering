@@ -16,3 +16,25 @@ go to VPC -> Peering connection
 requestor: app-Server
 acceptor: web-Server
 once the peering connection is created, we have to accept the request
+
+go to the route tables, click routes, edit route and add destination route
+ex: select the app server rt, in destination add webserver ip adress and and in target select peering connection and its id (it will be same value)
+ same like this vice-versa we need to do for webserver rt:
+ go to route table webserver rt, in destination add appserver ip adress and in target select peering connection and its id ((it will be same value))
+
+ thats it you are done now :) the VPC Peering is enabled and it can ping one vpc-to other vpc in same region 
+ 
+ -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ establishing vpc peering connections in different region VPC'S
+
+ go to the other region ohio. 
+ go to vpc -> peering connection 
+ give name as : db-app
+ requestor:db server
+ acceptor: app server
+ once the peering connection is done, here there wont be any accept request due to other region.
+ we need to go to the N.virginia region and vpc -> peering connection -> there will be pending request -> accept request
+
+ now goto each region route tables -> add destination and target (peering connection id)
+the peering connenction is established now between db and app and app to db 
