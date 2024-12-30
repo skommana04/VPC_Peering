@@ -1,0 +1,18 @@
+Taking 3 VPC's.
+2 VPC's are same region(N.virginia) but different AZ (APP_Server_VPC for us-east-1a)(WEB_Server_VPC for us-east-1b)
+1 vpc in different region(ohio) (DB_Server_VPC for us-east-2a)
+How I created the VPC:
+from  AWS Console-> go to vpc and more, select CIDR, region and AZ (1 public subnet, enabled public ip , no private subnet)
+remember-  No IP"S should be overlapping for VPCS
+Edit the deafult security group attached for all 3 vpc's, allowing all inbound traffic (Testing purpose). In real world we should give all traffic(security breach)
+create 3 ec2 instances for each VPC
+so,if you login now in any ec2 machine and ping other ec2 private ip- (no connection is established)
+
+------------------------------------------------VPC PEERING STEPS--------------------------------------------------------------------------
+
+establishing connection with in same region VPC (APP_WEB)
+
+go to VPC -> Peering connection
+requestor: app-Server
+acceptor: web-Server
+once the peering connection is created, we have to accept the request
